@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.17;
 
-interface IPancakeMigrator {
+interface IDotsamaMigrator {
     function migrate(
         address token,
         uint256 amountTokenMin,

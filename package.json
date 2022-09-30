@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx hardhat test",
-    "compile": "npx hardhat compile"
+    "compile": "npx hardhat compile",
+    "clear": "rmdir /s /q artifacts cache typechain-types"
   },
   "repository": {
     "type": "git",
@@ -37,10 +38,12 @@
     "@types/chai": "^4.2.0",
     "@types/mocha": "^9.1.0",
     "@types/node": ">=12.0.0",
+    "@uniswap/lib": "^4.0.1-alpha",
     "chai": "^4.2.0",
     "ethers": "^5.4.7",
     "hardhat": "^2.11.1",
-    "hardhat-gas-reporter": "^1.0.8",
+    "hardhat-contract-sizer": "^2.6.1",
+    "hardhat-gas-reporter": "^1.0.9",
     "solidity-coverage": "^0.8.0",
     "ts-node": ">=8.0.0",
     "typechain": "^8.1.0",
