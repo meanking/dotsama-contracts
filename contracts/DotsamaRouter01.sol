@@ -107,7 +107,7 @@ contract DotsamaRouter01 is IDotsamaRouter01 {
         uint deadline
     ) public override ensure(deadline) returns (uint amountA, uint amountB) {
         address pair = DotsamaLibrary.pairFor(factory, tokenA, tokenB);
-        IERC20(pair).transferFrom(msg.sender, pair, liquidity); // send liquidity to pair
+        IDotsamaPair(pair).transferFrom(msg.sender, pair, liquidity); // send liquidity to pair
         (uint amount0, uint amount1) = IDotsamaPair(pair).burn(to);
         (address token0,) = DotsamaLibrary.sortTokens(tokenA, tokenB);
         (amountA, amountB) = tokenA == token0 ? (amount0, amount1) : (amount1, amount0);

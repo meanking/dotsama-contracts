@@ -59,7 +59,7 @@ contract DotsamaERC20 is IDotsamaERC20 {
         address from,
         address to,
         uint256 value
-    ) private {
+    ) internal virtual {
         balanceOf[from] = balanceOf[from].sub(value);
         balanceOf[to] = balanceOf[to].add(value);
         emit Transfer(from, to, value);
@@ -79,7 +79,7 @@ contract DotsamaERC20 is IDotsamaERC20 {
         address from,
         address to,
         uint256 value
-    ) external returns (bool) {
+    ) external virtual returns (bool) {
         if (allowance[from][msg.sender] != type(uint256).max) {
             allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
         }

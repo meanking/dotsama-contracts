@@ -218,4 +218,26 @@ contract DotsamaPair is DotsamaERC20, IDotsamaPair {
         require(recoveredAddress != address(0) && recoveredAddress == owner, "Dotsama: INVALID_SIGNATURE");
         _approve(owner, spender, value);
     }
+
+    function _transfer(
+        address from,
+        address to,
+        uint256 value
+    ) internal override {
+        balanceOf[from] = balanceOf[from].sub(value);
+        balanceOf[to] = balanceOf[to].add(value);
+        emit Transfer(from, to, value);
+    }
+
+    function transferFrom(
+        address from,
+        address to,
+        uint256 value
+    ) external override(DotsamaERC20, IDotsamaPair) returns (bool) {
+        if (allowance[from][msg.sender] != type(uint256).max) {
+            allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
+        }
+        _transfer(from, to, value);
+        return true;
+    }
 }
